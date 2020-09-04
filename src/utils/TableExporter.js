@@ -18,9 +18,19 @@ class TableExporter {
     };
 
     exportExcel(){
-        const tableContent = this.table.outerHTML;
-        const tableHtmlUrl = `data:application/vnd.ms-excel;charset-utf-8, ${tableContent}`
-        this.fileDownload(tableHtmlUrl,"employees.xls")
+        const tableContent = this.table.outerHTML.replace(/ /g,"%20");
+        const rows = document.querySelectorAll("tbody tr")
+        rows.forEach(row => {
+        const valueTxtFilter = txtItemFilter.value.toLowerCase()
+        const text = row.textContent.toLowerCase()
+
+        if(!text.includes(valueTxtFilter)){
+            row.parentNode.removeChild(row);
+        }
+
+    })
+         const tableHtmlUrl = `data:application/vnd.ms-excel;charset-utf-8, ${tableContent}`
+         this.fileDownload(tableHtmlUrl,"employees.xls")
     };
 
     exportPDF(){
@@ -35,7 +45,6 @@ class TableExporter {
         pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
         };
 
-        // Old monolithic-style usage:
         html2PDF(tableContent, opt);
     };
 

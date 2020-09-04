@@ -9,20 +9,16 @@
     <main class="Main">
         <header class="Header" id="header">
             <p>
-                <button id="btnExportExcel" onclick="alert()">Export Excel</button>
-                <button  id="btnExportCsv">Export XLS</button>
-                <button  id="btnExportPDF">Export PDF</button>
+                <button id="btnExportExcel">Export Excel</button>
+                <button id="btnExportCsv">Export XLS</button>
+                <button id="btnExportPDF">Export PDF</button>
             </p>
             <p>
-                Supervisor: <input type="text" />
-                Clases: <input type="text" />
-                Departamento: <input type="text" />
-                Subsidiaria: <input type="text" />
-                <button> Filtrar </button>
+                <input type="text" class="table-filter" placeholder="Filtrar por cualquier item" id="txtItemFilter" />
             </p>
         </header>
         <section class="content">
-            <table>
+            <table class="main-table">
                 <thead>
                     <tr>
                         <th> Nombre </th>
@@ -37,10 +33,5 @@
             </table>
         </section>
     </main>
-  
-    <script>
-    
-    </script>
-
 </body>
 </html>
