@@ -7,6 +7,7 @@ window.addEventListener('load',router);
 let tableExporter;
 let btnExportExcel = document.getElementById("btnExportExcel")
 let btnExportCsv = document.getElementById("btnExportCsv")
+let btnExportPDF = document.getElementById("btnExportPDF")
 
 btnExportExcel.onclick = () => {
     tableExporter.exportExcel()
@@ -14,6 +15,10 @@ btnExportExcel.onclick = () => {
 
 btnExportCsv.onclick = () => {
     tableExporter.exportCsv()
+}
+
+btnExportPDF.onclick = () => {
+    tableExporter.exportPDF()
 }
 
 tableExporter = new TableExport(document.querySelector('table'))

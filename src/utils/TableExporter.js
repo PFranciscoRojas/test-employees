@@ -1,3 +1,5 @@
+import html2PDF from "html2pdf.js"
+
 class TableExporter {
     constructor(table){
         this.table = table
@@ -22,9 +24,19 @@ class TableExporter {
     };
 
     exportPDF(){
-        const tableContent = this.table.outerHTML;
-        const tableHtmlUrl = `data:application/vnd.ms-excel;charset-utf-8, ${tableContent}`
-        this.fileDownload(tableHtmlUrl,"employees.xls")
+        const tableContent = this.table;
+
+        var opt = {
+        margin:       0.5,
+        filename:     'Employees.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait'},
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        };
+
+        // Old monolithic-style usage:
+        html2PDF(tableContent, opt);
     };
 
     fileDownload(url, filename){
