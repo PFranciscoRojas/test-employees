@@ -7,7 +7,19 @@
 </head>
 <body>
     <main class="Main">
-        <header class="Header" id="header"></header>
+        <header class="Header" id="header">
+            <p>
+                <button id="btnExportExcel" onclick="alert()">Export Excel</button>
+                <button  id="btnExportCsv">Export XLS</button>
+            </p>
+            <p>
+                Supervisor: <input type="text" />
+                Clases: <input type="text" />
+                Departamento: <input type="text" />
+                Subsidiaria: <input type="text" />
+                <button> Filtrar </button>
+            </p>
+        </header>
         <section class="content">
             <table>
                 <thead>
@@ -24,5 +36,6 @@
             </table>
         </section>
     </main>
+
 </body>
 </html>
