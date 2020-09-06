@@ -7,7 +7,7 @@ class TableExporter {
 
     exportCsv(){
         let content = [];
-        const trs = this.table.querySelectorAll("tbody>tr")
+        const trs = document.getElementsByClassName("table-row")
         Array.prototype.map.call(trs, tr => {
             const tds = tr.children;
             content.push(Array.prototype.map.call(tds,td => td.innerHTML).join(";"))
@@ -16,25 +16,15 @@ class TableExporter {
         const csvUrl = `data:text/csv;charset=utf-8,${content}`
         this.fileDownload(csvUrl,"employees.csv")
     };
-
+    
     exportExcel(){
-        const tableContent = this.table.outerHTML.replace(/ /g,"%20");
-        const rows = document.querySelectorAll("tbody tr")
-        rows.forEach(row => {
-        const valueTxtFilter = txtItemFilter.value.toLowerCase()
-        const text = row.textContent.toLowerCase()
-
-        if(!text.includes(valueTxtFilter)){
-            row.parentNode.removeChild(row);
-        }
-
-    })
-         const tableHtmlUrl = `data:application/vnd.ms-excel;charset-utf-8, ${tableContent}`
-         this.fileDownload(tableHtmlUrl,"employees.xls")
+        const newTableFiltered = this.filterData();
+        const tableHtmlUrl = `data:application/vnd.ms-excel;charset-utf-8, ${newTableFiltered.outerHTML.replace(/ /g,"%20")}`
+        this.fileDownload(tableHtmlUrl,"employees.xls")
     };
 
     exportPDF(){
-        const tableContent = this.table;
+        const newTableFiltered = this.filterData();
 
         var opt = {
         margin:       0.5,
@@ -45,7 +35,7 @@ class TableExporter {
         pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
         };
 
-        html2PDF(tableContent, opt);
+        html2PDF(newTableFiltered, opt);
     };
 
     fileDownload(url, filename){
@@ -53,6 +43,19 @@ class TableExporter {
         link.href = url;
         link.download = filename;
         link.click()
+    }
+
+    filterData(){
+        const dataFiltered = document.getElementsByClassName("table-row")
+        const newTable   = document.createElement("table");
+        const tblBody = document.createElement("tbody");
+        Array.prototype.filter.call(dataFiltered, function(tr){
+            let trClone = tr.cloneNode(true);
+            tblBody.appendChild(trClone);
+        });
+        newTable.appendChild(tblBody);
+
+        return newTable;
     }
 };
 

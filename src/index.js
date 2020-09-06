@@ -24,20 +24,20 @@ btnExportPDF.onclick = () => {
 }
 
 const tableFilter = () => {
+    const tableMain = document.getElementById("table-main");
+    const rows = document.querySelectorAll("#table-content tr")
 
-    const tableMain = document.querySelector("table");
-    const rows = document.querySelectorAll("tbody tr")
     rows.forEach(row => {
         const valueTxtFilter = txtItemFilter.value.toLowerCase()
         const text = row.textContent.toLowerCase()
 
         if(text.includes(valueTxtFilter)){
             row.style.display="table-row"
-            row.classList.add("hola")
+            row.classList.add("table-row")
         }  else{
 
             row.style.display="none"
-            row.classList.remove("hola")
+            row.classList.remove("table-row")
         }
     })
 
