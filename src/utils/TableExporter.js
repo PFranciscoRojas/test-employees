@@ -7,7 +7,11 @@ class TableExporter {
 
     exportCsv(){
         let content = [];
-        const trs = document.getElementsByClassName("table-row")
+        let trs = document.getElementsByClassName("table-row")
+        if(trs.length <= 0){
+            trs = document.querySelectorAll("#table-content tr")
+        }
+
         Array.prototype.map.call(trs, tr => {
             const tds = tr.children;
             content.push(Array.prototype.map.call(tds,td => td.innerHTML).join(";"))
@@ -46,7 +50,12 @@ class TableExporter {
     }
 
     filterData(){
-        const dataFiltered = document.getElementsByClassName("table-row")
+
+        let dataFiltered = document.getElementsByClassName("table-row")
+        if(dataFiltered.length <= 0){
+            dataFiltered = this.table
+            return dataFiltered;
+        }
         const newTable   = document.createElement("table");
         const tblBody = document.createElement("tbody");
         Array.prototype.filter.call(dataFiltered, (tr)=>{
