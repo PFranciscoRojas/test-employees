@@ -10,7 +10,7 @@ npm install  --save html2pdf.js
 
 ### build 
 
-npm build start
+npm run build 
 
 ### Start
 
