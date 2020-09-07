@@ -1,4 +1,4 @@
-const DATA = '../../datosEmpleados.json';
+const DATA = 'datosEmpleados.json';
 
 const getData = async () => {
     try{
