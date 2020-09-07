@@ -9,17 +9,22 @@
 <body>
     <main class="Main">
         <header class="Header" id="header">
-            <p>
+            <div>
                 <input type="text"  placeholder="Filtrar por Supervisor" id="txtItemSupervisor" />
                 <input type="text"  placeholder="Filtrar por Clase" id="txtItemClase" />
                 <input type="text"  placeholder="Filtrar por Subsidiaria" id="txtItemSubsidiaria" />
                 <input type="text"  placeholder="Filtrar por Departamento" id="txtItemDepartamento" />
-            </p>
-            <p>
-                <button id="btnExportExcel" class="button">Export Excel</button>
-                <button id="btnExportCsv" class="button">Export XLS</button>
-                <button id="btnExportPDF" class="button">Export PDF</button>
-            </p>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropbutton">Export</button>
+                <div class="dropdown-content">
+                    <a id="btnExportExcel" class="button">Export Excel</a>
+                    <a id="btnExportCsv" class="button">Export XLS</a>
+                    <a id="btnExportPDF" class="button">Export PDF</a>
+                </div>
+            </div>
+            
         </header>
         <section class="content">
             <table class="main-table" id="table-main" >
