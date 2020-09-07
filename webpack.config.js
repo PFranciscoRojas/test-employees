@@ -38,7 +38,12 @@ module.exports = {
                 {
                     from : './src/styles/styles.css',
                     to: ''
-                }
+                },
+                {
+                    from : 'datosEmpleados.json',
+                    to: '',
+                    
+                },
             ]
         })
     ],
