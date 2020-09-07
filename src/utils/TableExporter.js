@@ -16,7 +16,7 @@ class TableExporter {
         const csvUrl = `data:text/csv;charset=utf-8,${content}`
         this.fileDownload(csvUrl,"employees.csv")
     };
-    
+
     exportExcel(){
         const newTableFiltered = this.filterData();
         const tableHtmlUrl = `data:application/vnd.ms-excel;charset-utf-8, ${newTableFiltered.outerHTML.replace(/ /g,"%20")}`
@@ -49,7 +49,7 @@ class TableExporter {
         const dataFiltered = document.getElementsByClassName("table-row")
         const newTable   = document.createElement("table");
         const tblBody = document.createElement("tbody");
-        Array.prototype.filter.call(dataFiltered, function(tr){
+        Array.prototype.filter.call(dataFiltered, (tr)=>{
             let trClone = tr.cloneNode(true);
             tblBody.appendChild(trClone);
         });

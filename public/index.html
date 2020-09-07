@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../src/styles/styles.css" rel="stylesheet" type= "text/css"  >  
     <title>Employees</title>
 </head>
 <body>
     <main class="Main">
         <header class="Header" id="header">
             <p>
-                <button id="btnExportExcel">Export Excel</button>
-                <button id="btnExportCsv">Export XLS</button>
-                <button id="btnExportPDF">Export PDF</button>
+                <button id="btnExportExcel" class="button">Export Excel</button>
+                <button id="btnExportCsv" class="button">Export XLS</button>
+                <button id="btnExportPDF" class="button">Export PDF</button>
             </p>
             <p>
-                <input type="text" class="table-filter" placeholder="Filtrar por cualquier item" id="txtItemFilter" />
+                <input type="text"  placeholder="Filtrar por Supervisor" id="txtItemSupervisor" />
+                <input type="text"  placeholder="Filtrar por Clase" id="txtItemClase" />
+                <input type="text"  placeholder="Filtrar por Subsidiaria" id="txtItemSubsidiaria" />
+                <input type="text"  placeholder="Filtrar por Departamento" id="txtItemDepartamento" />
             </p>
         </header>
         <section class="content">
-            <table class="main-table" id="table-main">
+            <table class="main-table" id="table-main" >
                 <thead>
                     <tr>
+                        <th> Supervisor  </th>
                         <th> Nombre </th>
                         <th> Cargo </th>
-                        <th> Supervisor </th>
                         <th> Clase </th>
                         <th> Subsidiaria </th>
                         <th> Departamento </th>
